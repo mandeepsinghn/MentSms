@@ -19,6 +19,7 @@
     <link type="text/css" rel="stylesheet" href="{{asset('assets/css/theme-default/materialadmin.css')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('assets/css/theme-default/font-awesome.min.css')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('assets/css/theme-default/material-design-iconic-font.min.css')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset('assets/css/app.css')}}" />
     <!-- END STYLESHEETS -->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->

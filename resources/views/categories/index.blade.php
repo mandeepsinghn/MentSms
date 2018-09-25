@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-
 <section>
     <div class="section-body contain-lg">
         <!-- BEGIN INTRO -->
@@ -35,9 +34,9 @@
                             <table class="table no-margin">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Name</th>
-                                        <th>Action</th>
+                                        <th style="width:10%;">#</th>
+                                        <th style="width:80%;">Name</th>
+                                        <th style="width:10%;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -45,7 +44,11 @@
                                     <tr>
                                         <td>{{$item->id}}</td>
                                         <td>{{$item->name}}</td>
-                                        <td>Action</td>
+                                        <td>
+                                            <a class="btn ink-reaction btn-floating-action btn-danger" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -63,7 +66,6 @@
         <!-- END RESPONSIVE TABLE 1 -->
     </div>
 </section>
-
 <div class="modal" tabindex="-1" role="dialog" id="addCategoryModel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -82,7 +84,39 @@
                                 <input type="text" class="form-control" id="name" name="name" required data-rule-minlength="2">
                                 <label for="Name1">Category Name</label>
                             </div>
-
+                        </div>
+                        <!--end .card-body -->
+                        <div class="card-actionbar">
+                            <div class="card-actionbar-row">
+                                <button type="submit" class="btn btn-flat btn-primary ink-reaction">Save</button>
+                            </div>
+                        </div>
+                        <!--end .card-actionbar -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="updateCategoryModel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Category</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+            <div class="modal-body">
+                <form class="form form-validate floating-label" method="POST" novalidate="novalidate" action="{{ url('/categories/update', []) }}">
+                    {{ csrf_field() }}
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <input type="hidden" name="id" id="fieldId" />
+                                <input type="text" class="form-control" id="name" name="name" required data-rule-minlength="2">
+                                <label for="Name1">Category Name</label>
+                            </div>
                         </div>
                         <!--end .card-body -->
                         <div class="card-actionbar">

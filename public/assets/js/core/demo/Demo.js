@@ -256,3 +256,6 @@
 	// =========================================================================
 	namespace.Demo = new Demo;
 }(this.materialadmin, jQuery)); // pass in (namespace, jQuery):
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })

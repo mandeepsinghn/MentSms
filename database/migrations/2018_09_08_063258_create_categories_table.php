@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->integer('school_id');
             $table->integer('branch_id');
             $table->string('name', 250);
+            $table->enum('status', ['ACTIVE', 'INACTIVE', 'DELETED']);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });

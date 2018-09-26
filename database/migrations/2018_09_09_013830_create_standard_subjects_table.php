@@ -15,6 +15,7 @@ class CreateStandardSubjectsTable extends Migration
     {
         Schema::create('standard_subjects', function (Blueprint $table) {
             $table->increments('id');
+            $table->enum('status', ['ACTIVE', 'INACTIVE', 'DELETED']);
             $table->timestamps();
         });
     }

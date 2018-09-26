@@ -15,6 +15,7 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
+            $table->enum('status', ['ACTIVE', 'INACTIVE', 'DELETED']);
             $table->timestamps();
         });
     }

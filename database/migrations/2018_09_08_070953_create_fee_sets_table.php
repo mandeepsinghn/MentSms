@@ -15,6 +15,7 @@ class CreateFeeSetsTable extends Migration
     {
         Schema::create('fee_sets', function (Blueprint $table) {
             $table->increments('id');
+            $table->enum('status', ['ACTIVE', 'INACTIVE', 'DELETED']);
             $table->timestamps();
         });
     }

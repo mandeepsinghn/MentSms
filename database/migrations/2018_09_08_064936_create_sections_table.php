@@ -22,7 +22,7 @@ class CreateSectionsTable extends Migration
             $table->integer('medium_id');
             $table->integer('session_id');
             $table->string('name', 250);
-            $table->enum('status', ['ACTIVE', 'INACTIVE', 'DELETED']);
+            $table->enum('status', ['ACTIVE', 'INACTIVE', 'DELETED'])->default('ACTIVE');
             $table->timestamp('create_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });

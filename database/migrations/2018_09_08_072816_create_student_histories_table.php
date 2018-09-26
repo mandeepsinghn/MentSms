@@ -15,7 +15,7 @@ class CreateStudentHistoriesTable extends Migration
     {
         Schema::create('student_histories', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('status', ['ACTIVE', 'INACTIVE', 'DELETED']);
+            $table->enum('status', ['ACTIVE', 'INACTIVE', 'DELETED'])->default('ACTIVE');
             $table->timestamps();
         });
     }

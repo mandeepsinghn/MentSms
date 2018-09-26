@@ -15,7 +15,7 @@ class CreateTimeTablesTable extends Migration
     {
         Schema::create('time_tables', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('status', ['ACTIVE', 'INACTIVE', 'DELETED']);
+            $table->enum('status', ['ACTIVE', 'INACTIVE', 'DELETED'])->default('ACTIVE');
             $table->timestamps();
         });
     }

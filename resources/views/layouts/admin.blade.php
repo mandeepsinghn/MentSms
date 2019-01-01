@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Material Admin - Blank page</title>
+    <title>@yield('title')</title>
 
     <!-- BEGIN META -->
     <meta charset="utf-8">

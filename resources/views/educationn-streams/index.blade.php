@@ -1,7 +1,4 @@
 @extends('layouts.admin')
-@section('title')
-    Categories
-@endsection
 @section('content')
 <section>
     <div class="section-body contain-lg">
@@ -57,7 +54,6 @@
                                 </tbody>
                             </table>
                         </div>
-                        {{$categories->links()}}
                         <!--end .table-responsive -->
                     </div>
                     <!--end .card-body -->

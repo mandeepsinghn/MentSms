@@ -14,8 +14,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all()->where('school_id', '=', $this->getSchoolId())
-            ->where('branch_id', '=', $this->getBranchId());
+
+        $categories = Category::query()->where('school_id', '=', $this->getSchoolId())
+            ->where('branch_id', '=', $this->getBranchId())->paginate(1);
+
         return view('categories.index', compact('categories'));
         // return $categories;
     }

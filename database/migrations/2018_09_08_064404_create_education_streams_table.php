@@ -19,7 +19,7 @@ class CreateEducationStreamsTable extends Migration
             $table->integer('branch_id');
             $table->string('name', 250);
             $table->enum('status', ['ACTIVE', 'INACTIVE', 'DELETED'])->default('ACTIVE');
-            $table->timestamp('create_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
     }

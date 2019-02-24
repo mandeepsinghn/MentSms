@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    Education Mediums
+    Subjects
 @endsection
 @section('content')
 <section>
@@ -8,7 +8,7 @@
         <!-- BEGIN INTRO -->
         <div class="row">
             <div class="col-lg-10">
-                <h1 class="text-primary">Education Mediums</h1>
+                <h1 class="text-primary">Subjects</h1>
             </div>
         </div>
         <!--end .row -->
@@ -19,16 +19,16 @@
             <div class="col-lg-12">
                 <div class="card card-underline">
                     <div class="card-head">
-                        <header>All Education Mediums</header>
+                        <header>All Subjects</header>
                         <div class="tools">
                             <div class="btn-group">
                                 <!-- <div class="btn-group">
                                     <a href="#" class="btn btn-icon-toggle dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
                                     <ul class="dropdown-menu animation-dock pull-right menu-card-styling" role="menu" style="text-align: left;">
-                                        <li><a href="javascript:;" data-toggle="modal" data-target="#addMediumModel"><i class="fa fa-plus"></i> Add Medium</a></li>
+                                        <li><a href="javascript:;" data-toggle="modal" data-target="#addStreamModel"><i class="fa fa-plus"></i> Add Stream</a></li>
                                     </ul>
                                 </div> -->
-                                <a href="javascript:;" data-toggle="modal" class="btn ink-reaction btn-raised btn-primary" data-target="#addMediumModel"><i class="fa fa-plus"></i> Add Medium</a>
+                                <a href="javascript:;" data-toggle="modal" class="btn ink-reaction btn-raised btn-primary" data-target="#addStreamModel"><i class="fa fa-plus"></i> Add Subject</a>
                                 {{--<a class="btn btn-icon-toggle btn-collapse"><i class="fa fa-angle-down"></i></a>--}}
                             </div>
                         </div>
@@ -45,28 +45,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($educationMedium as $item)
+                                    @foreach ($subjects as $item)
                                     <tr>
                                         <td>{{$item->id}}</td>
                                         <td>{{$item->name}}</td>
                                         <td>{{$item->status}}</td>
                                         <td>
-                                        @if($item->status!='DELETED')
-                                            <a class="btn ink-reaction btn-floating-action btn-primary"  data-placement="top" title="Edit" data-toggle="modal" data-target="#addMediumModel" data-source="{{str_replace('"',"'",json_encode($item))}}">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
+                                            @if($item->status!='DELETED')
+                                                <a class="btn ink-reaction btn-floating-action btn-primary"  data-placement="top" title="Edit" data-toggle="modal" data-target="#addStreamModel" data-source="{{str_replace('"',"'",json_encode($item))}}">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
 
-                                            <a class="btn ink-reaction btn-floating-action btn-danger delete" data-toggle="tooltip" data-placement="top" title="Delete" href="{{ url('education-mediums/destroy/' . $item->id) }}">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
-                                        @endif
+                                                <a class="btn ink-reaction btn-floating-action btn-danger delete" data-toggle="tooltip" data-placement="top" title="Delete" href="{{ url('subjects/destroy/' . $item->id) }}">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
-                        {{$educationMedium->links()}}
+                        {{$subjects->links()}}
                         <!--end .table-responsive -->
                     </div>
                     <!--end .card-body -->
@@ -79,22 +79,22 @@
         <!-- END RESPONSIVE TABLE 1 -->
     </div>
 </section>
-<div class="modal" tabindex="-1" role="dialog" id="addMediumModel">
+<div class="modal" tabindex="-1" role="dialog" id="addStreamModel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add Education Medium</h5>
+                <h5 class="modal-title">Add Subject</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form class="form form-validate floating-label" method="POST" novalidate="novalidate" action="{{ url('/education-mediums/store', []) }}">
+            <form class="form form-validate floating-label" method="POST" novalidate="novalidate" action="{{ url('/subjects/store', []) }}">
                 <div class="modal-body">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <input type="hidden" name="id" id="fieldId" />
                         <input type="text" class="form-control" id="name" name="name" required data-rule-minlength="2">
-                        <label for="Name1">Education Medium Name</label>
+                        <label for="Name1">Subject Name</label>
                     </div>
                     <div class="form-group">
                         <select id="select1" name="status" class="form-control">

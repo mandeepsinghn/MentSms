@@ -15,6 +15,9 @@ class EducationStreamController extends Controller
     public function index()
     {
         //
+        $educationStream = EducationStream::query()->where('school_id', '=', $this->getSchoolId())
+            ->where('branch_id', '=', $this->getBranchId())->paginate(10);
+        return view('education-streams.index', compact('educationStream'));
     }
 
     /**
@@ -36,6 +39,21 @@ class EducationStreamController extends Controller
     public function store(Request $request)
     {
         //
+        $data = [
+            'school_id' => $this->getSchoolId(),
+            'branch_id' => $this->getBranchId(),
+            'name' => $request->name,
+            'status'=> $request->status
+        ];
+        //dd($data);
+        $stream = new EducationStream();
+        $stream->fill($data);
+        if($request->id){
+            $stream->id = $request->id;
+            $stream->exists = true;
+        }
+        $stream->save();
+        return redirect('/education-streams')->with('success', ['Greate try.']);
     }
 
     /**
@@ -78,8 +96,11 @@ class EducationStreamController extends Controller
      * @param  \App\Models\EducationStream  $educationStream
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EducationStream $educationStream)
+    public function destroy($id)
     {
         //
+        $stream = EducationStream::find($id);    
+        $stream->delete();
+        return redirect('/education-streams')->with('success', ['Greate try.']);
     }
 }

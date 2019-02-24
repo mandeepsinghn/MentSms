@@ -15,6 +15,9 @@ class SubjectController extends Controller
     public function index()
     {
         //
+        $subjects = Subject::query()->where('school_id', '=', $this->getSchoolId())
+            ->where('branch_id', '=', $this->getBranchId())->paginate(10);
+        return view('subjects.index', compact('subjects'));
     }
 
     /**
@@ -36,6 +39,21 @@ class SubjectController extends Controller
     public function store(Request $request)
     {
         //
+        $data = [
+            'school_id' => $this->getSchoolId(),
+            'branch_id' => $this->getBranchId(),
+            'name' => $request->name,
+            'status'=> $request->status
+        ];
+        //dd($data);
+        $stream = new Subject();
+        $stream->fill($data);
+        if($request->id){
+            $stream->id = $request->id;
+            $stream->exists = true;
+        }
+        $stream->save();
+        return redirect('/subjects')->with('success', ['Greate try.']);
     }
 
     /**
@@ -78,8 +96,11 @@ class SubjectController extends Controller
      * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subject $subject)
+    public function destroy($id)
     {
         //
+        $stream = Subject::find($id);
+        $stream->delete();
+        return redirect('/subjects')->with('success', ['Greate try.']);
     }
 }

@@ -24,12 +24,24 @@ Route::delete('/branches/destroy','BranchController@destroy');
 Route::post('/branches/store','BranchController@store');
 
 Route::get('/categories', 'CategoryController@index')->name('listCategories');
-Route::delete('/categories/destroy','CategoryController@destroy')->name('deleteCategory');
+Route::get('/categories/destroy/{id}','CategoryController@destroy')->name('deleteCategory');
 Route::post('/categories/store', 'CategoryController@store')->name('saveCategory');
 
+Route::get('/education-streams', 'EducationStreamController@index')->name('listStreams');
+Route::get('/education-streams/destroy/{id}','EducationStreamController@destroy')->name('deleteStream');
+Route::post('/education-streams/store', 'EducationStreamController@store')->name('saveStream');
+
 Route::get('/education-mediums', 'EducationMediumController@index')->name('listMediums');
-Route::delete('/education-mediums/destroy','EducationMediumController@destroy')->name('deleteMedium');
+Route::get('/education-mediums/destroy/{id}','EducationMediumController@destroy')->name('deleteMedium');
 Route::post('/education-mediums/store', 'EducationMediumController@store')->name('saveMedium');
+
+Route::get('/subjects', 'SubjectController@index')->name('listSubjects');
+Route::get('/subjects/destroy/{id}','SubjectController@destroy')->name('deleteSubject');
+Route::post('/subjects/store', 'SubjectController@store')->name('saveSubject');
+
+Route::get('/standards', 'StandardController@index')->name('listStandards');
+Route::get('/standards/destroy/{id}','StandardController@destroy')->name('deleteStandard');
+Route::post('/standards/store', 'StandardController@store')->name('saveStandard');
 
 Route::get('/fee-types', 'FeeTypesController@index')->name('listFeeTypes');
 Route::delete('/fee-types/destroy','FeeTypesController@destroy')->name('deleteFeeType');

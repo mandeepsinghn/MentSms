@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Standard extends Model
 {
     //
+    protected $fillable = ['school_id', 'branch_id', 'name', 'status'];
 }

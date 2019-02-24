@@ -16,7 +16,7 @@ class CategoryController extends Controller
     {
 
         $categories = Category::query()->where('school_id', '=', $this->getSchoolId())
-            ->where('branch_id', '=', $this->getBranchId())->paginate(1);
+            ->where('branch_id', '=', $this->getBranchId())->paginate(10);
 
         return view('categories.index', compact('categories'));
         // return $categories;
@@ -40,14 +40,20 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->toArray(), $request->textarea1);
+        //dd($request->status, $request->id);
         $data = [
             'school_id' => $this->getSchoolId(),
             'branch_id' => $this->getBranchId(),
-            'name' => $request->name
+            'name' => $request->name,
+            'status'=> $request->status
         ];
+        //dd($request->status, $request->id, $data);
         $cat = new Category();
         $cat->fill($data);
+        if($request->id){
+            $cat->id = $request->id;
+            $cat->exists = true;
+        }
         $cat->save();
         return redirect('/categories')->with('success', ['Greate try.']);
     }
@@ -92,13 +98,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        $category->delete();
-        if(\request()->isXmlHttpRequest()){
-            return ['success'=>true,'message'=>'Category deleted successfully'];
-        }else{
-            return redirect(route('listCategories'));
-        }
+        //
+        $cat = Category::find($id);    
+        $cat->delete();
+        return redirect('/categories')->with('success', ['Greate try.']);
     }
 }

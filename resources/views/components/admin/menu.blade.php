@@ -44,12 +44,12 @@
 
                     </li>
                     <li>
-                        <a href="{{ url('/education-mediums', []) }}">
+                        <a href="{{ url('/education-streams', []) }}">
                             <span class="title">Education Stream</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ url('/education-mediums', []) }}">
+                        <a href="{{ url('/subjects', []) }}">
                             <span class="title">Subjects</span>
                         </a>
                     </li>
@@ -69,7 +69,7 @@
 
                     </li>
                     <li>
-                        <a href="{{ url('/education-mediums', []) }}">
+                        <a href="{{ url('/standards', []) }}">
                             <span class="title">Standards</span>
                         </a>
                     </li>

@@ -15,7 +15,7 @@ class EducationMediumController extends Controller
     public function index()
     {
         $educationMedium = EducationMedium::query()->where('school_id', '=', $this->getSchoolId())
-            ->where('branch_id', '=', $this->getBranchId())->paginate(1);
+            ->where('branch_id', '=', $this->getBranchId())->paginate(10);
         return view('education-mediums.index', compact('educationMedium'));        
     }
 
@@ -40,11 +40,16 @@ class EducationMediumController extends Controller
         $data = [
             'school_id' => $this->getSchoolId(),
             'branch_id' => $this->getBranchId(),
-            'name' => $request->name
+            'name' => $request->name,
+            'status'=> $request->status
         ];
 //        dd($data);
         $cat = new EducationMedium();
         $cat->fill($data);
+        if($request->id){
+            $cat->id = $request->id;
+            $cat->exists = true;
+        }
         $cat->save();
         return redirect('/education-mediums')->with('success', ['Greate try.']);
     }
@@ -89,8 +94,11 @@ class EducationMediumController extends Controller
      * @param  \App\Models\EducationMedium  $educationMedium
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EducationMedium $educationMedium)
+    public function destroy($id)
     {
         //
+        $cat = EducationMedium::find($id);    
+        $cat->delete();
+        return redirect('/education-mediums')->with('success', ['Greate try.']);
     }
 }

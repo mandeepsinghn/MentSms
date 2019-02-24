@@ -15,6 +15,9 @@ class StandardController extends Controller
     public function index()
     {
         //
+        $standards = Standard::query()->where('school_id', '=', $this->getSchoolId())
+            ->where('branch_id', '=', $this->getBranchId())->paginate(10);
+        return view('standards.index', compact('standards'));
     }
 
     /**
@@ -36,6 +39,21 @@ class StandardController extends Controller
     public function store(Request $request)
     {
         //
+        $data = [
+            'school_id' => $this->getSchoolId(),
+            'branch_id' => $this->getBranchId(),
+            'name' => $request->name,
+            'status'=> $request->status
+        ];
+        //dd($data);
+        $stream = new Standard();
+        $stream->fill($data);
+        if($request->id){
+            $stream->id = $request->id;
+            $stream->exists = true;
+        }
+        $stream->save();
+        return redirect('/standards')->with('success', ['Greate try.']);
     }
 
     /**
@@ -78,8 +96,11 @@ class StandardController extends Controller
      * @param  \App\Models\Standard  $standard
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Standard $standard)
+    public function destroy($id)
     {
         //
+        $stream = Standard::find($id);
+        $stream->delete();
+        return redirect('/standards')->with('success', ['Greate try.']);
     }
 }

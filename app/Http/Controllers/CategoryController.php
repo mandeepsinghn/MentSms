@@ -94,6 +94,11 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        if(\request()->isXmlHttpRequest()){
+            return ['success'=>true,'message'=>'Category deleted successfully'];
+        }else{
+            return redirect(route('listCategories'));
+        }
     }
 }

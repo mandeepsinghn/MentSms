@@ -76,6 +76,30 @@
                 </ul>
             </li>
             <li class="gui-folder">
+                <a >
+                    <div class="gui-icon"><i class="fa fa-group"></i></div>
+                    <span class="title">Student Management</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="{{ url('/education-mediums', []) }}">
+                            <span class="title">View Students</span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="{{ url('/education-mediums', []) }}">
+                            <span class="title">Upgrade Student</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/education-mediums', []) }}">
+                            <span class="title">Import Student</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="gui-folder">
                 <a>
                     <div class="gui-icon"><i class="fa fa-money"></i></div>
                     <span class="title">Fee Management</span>
@@ -104,10 +128,58 @@
                     </li>
                 </ul>
             </li>
+            <li class="gui-folder">
+                <a >
+                    <div class="gui-icon"><i class="fa fa-envelope"></i></div>
+                    <span class="title">Communication</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="{{ url('/education-mediums', []) }}">
+                            <span class="title">Email</span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="{{ url('/education-mediums', []) }}">
+                            <span class="title">SMS</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/education-mediums', []) }}">
+                            <span class="title">Notification</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/education-mediums', []) }}">
+                            <span class="title">Other</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="gui-folder">
+                <a >
+                    <div class="gui-icon"><i class="fa fa-file-code-o"></i></div>
+                    <span class="title">Examination</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="{{ url('/education-mediums', []) }}">
+                            <span class="title">Schdules</span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="{{ url('/education-mediums', []) }}">
+                            <span class="title">Results</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li>
                 <a href="{{ url('/education-mediums', []) }}">
                     <div class="gui-icon"><i class="fa fa-table"></i></div>
-                    <span class="title">Transport</span>
+                    <span class="title">Exam Hall Ticket</span>
                 </a>
             </li>
         </ul>

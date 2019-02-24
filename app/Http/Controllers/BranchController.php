@@ -80,7 +80,12 @@ class BranchController extends Controller
      */
     public function destroy(Branch $branch)
     {
-        //
+        $branch->delete();
+        if(\request()->isXmlHttpRequest()){
+            return ['success'=>true,'message'=>'Branch deleted successfully'];
+        }else{
+            return redirect(route('listBranches'));
+        }
     }
 
     public function getBranch()
